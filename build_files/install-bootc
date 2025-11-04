@@ -54,7 +54,7 @@ Standards-Version: 3.9.2
 Package: libostree-1-1
 Version: 2025.6
 Maintainer: Snow Linux <snow@snowlinux.org>
-Architecture: $(arch)
+Architecture: $(dpkg --print-architecture)
 Description: Dummy package to provide libostree-1-1
 EOF
 
