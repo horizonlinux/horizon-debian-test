@@ -44,9 +44,9 @@ export PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/share/pkgconfig
 make bin install-all install-initramfs-dracut
 popd
 
-# Dummy libostree-1-1 package for dependant packages
+# Build and install a dummy libostree-1-1 package for dependant packages
 mkdir -p /tmp/equivs
-cat > /tmp/equivs/libostree-fix <<'EOF'
+cat > /tmp/equivs/libostree-fix <<EOF
 Section: misc
 Priority: optional
 Standards-Version: 3.9.2
@@ -54,7 +54,7 @@ Standards-Version: 3.9.2
 Package: libostree-1-1
 Version: 2025.6
 Maintainer: Snow Linux <snow@snowlinux.org>
-Architecture: amd64
+Architecture: $(arch)
 Description: Dummy package to provide libostree-1-1
 EOF
 
