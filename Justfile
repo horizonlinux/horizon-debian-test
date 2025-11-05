@@ -6,11 +6,11 @@ filesystem := env("BUILD_FILESYSTEM", "ext4")
 default:
     just --list --unsorted
 
-build-containerfile $image_name=image_name:
-    sudo podman build --no-cache -t "{{ image_name }}:latest" .
+build-container $image_name=image_name:
+    sudo podman build --no-cache -t "{{ image_name }}:{{ image_tag }}" .
 
 run-container $image_name=image_name:
-    sudo podman run --rm -it "{{ image_name }}:latest" bash
+    sudo podman run --rm -it "{{ image_name }}:{{ image_tag }}" bash
 
 bootc *ARGS:
     sudo podman run \
