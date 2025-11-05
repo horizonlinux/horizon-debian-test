@@ -6,6 +6,9 @@ set -ouex pipefail
 # Replace me by deleting this entire thing and using upstream ostree/bootc packages
 # when they're ready.
 
+echo "::group::Executing install-bootc"
+trap 'echo "::endgroup::"' EXIT
+
 DEV_DEPS="libzstd-dev libssl-dev pkg-config curl git build-essential meson \
 libfuse3-dev liblzma-dev e2fslibs-dev libext2fs-dev libgpgme-dev go-md2man \
 autoconf automake libtool libglib2.0-dev bison flex equivs"
