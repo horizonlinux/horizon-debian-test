@@ -22,7 +22,8 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     mkdir -p /var/home && \
     mkdir -p /var/roothome && \
     mkdir -p /var/srv && \
-    mkdir -p /sysroot /boot && \
+    mkdir -p /sysroot && \
+    mkdir -p /boot && \
     mkdir -p /usr/lib/ostree && \
     ln -s /var/home /home && \
     ln -s /var/roothome /root && \
