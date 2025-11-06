@@ -34,3 +34,6 @@ cp "/boot/vmlinuz-$KERNEL_VERSION" "/usr/lib/modules/$KERNEL_VERSION/vmlinuz"
 
 # Use proper home directory for new users
 sed -i 's|.*HOME=/home|HOME=/var/home|' "/etc/default/useradd"
+
+# Enable boot.mount explicitly
+systemctl enable boot.mount
