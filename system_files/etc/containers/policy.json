@@ -15,7 +15,7 @@
                     }
                 }
             ],
-            "ghcr.io/linuxsnow": [
+            "ghcr.io/frostyard": [
                 {
                     "type": "sigstoreSigned",
                     "keyPaths": [

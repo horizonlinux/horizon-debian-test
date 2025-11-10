@@ -1,3 +1,3 @@
 docker:
-  ghcr.io/linuxsnow:
+  ghcr.io/frostyard:
     use-sigstore-attachments: true
