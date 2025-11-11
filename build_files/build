@@ -41,3 +41,6 @@ systemctl enable home.mount
 systemctl enable root.mount
 systemctl enable srv.mount
 systemctl enable mnt.mount
+
+# remove /etc/machine-id
+rm -f /etc/machine-id
