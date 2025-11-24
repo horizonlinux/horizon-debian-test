@@ -20,11 +20,12 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
         /home \
         /root \
         /srv && \
-    mkdir /sysroot && \
     mkdir /boot && \
     mkdir /root && \
     mkdir /home && \
     mkdir /srv && \
+    rm -f /etc/machine-id && \
+    mkdir /sysroot && \
     ln -s sysroot/ostree ostree
 
 # DEBUGGING

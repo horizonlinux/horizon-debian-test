@@ -32,7 +32,7 @@ apt install -y \
 KERNEL_VERSION="$(basename "$(find /usr/lib/modules -maxdepth 1 -type d | grep -v -E "*.img" | tail -n 1)")"
 dracut --force --no-hostonly --reproducible --zstd --verbose \
   --kver "$KERNEL_VERSION" "/usr/lib/modules/$KERNEL_VERSION/initramfs.img"
-cp "/boot/vmlinuz-$KERNEL_VERSION" "/usr/lib/modules/$KERNEL_VERSION/vmlinuz"
+cp -f "/boot/vmlinuz-$KERNEL_VERSION" "/usr/lib/modules/$KERNEL_VERSION/vmlinuz"
 
 # Use proper home directory for new users
 sed -i 's|.*HOME=/home|HOME=/var/home|' "/etc/default/useradd"
@@ -48,6 +48,3 @@ chmod 440 /etc/sudoers.d/001-bootc
 
 # Add build information to os-release
 echo "BUILD_ID=\"$BUILD_ID\"" >> /usr/lib/os-release
-
-# remove /etc/machine-id
-rm -f /etc/machine-id
