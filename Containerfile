@@ -15,18 +15,8 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=tmpfs,dst=/tmp \
     /ctx/install-bootc && \
     /ctx/build && \
-    rm -rf \
-        /boot \
-        /home \
-        /root \
-        /srv && \
-    mkdir /boot && \
-    mkdir /root && \
-    mkdir /home && \
-    mkdir /srv && \
-    rm -f /etc/machine-id && \
-    mkdir /sysroot && \
-    ln -s sysroot/ostree ostree
+    /ctx/shared/build-initramfs && \
+    /ctx/shared/finalize
 
 # DEBUGGING
 # RUN apt update -y && apt install -y whois
