@@ -35,8 +35,8 @@ for entry in "$BLS_DIR"/*.conf; do
         kernel_path=$(grep -E '^linux ' "$entry" | awk '{print $2}')
         if [[ $kernel_path =~ /EFI/Linux/([^/]+)/vmlinuz ]]; then
             kernel_version="${BASH_REMATCH[1]}"
-            # Validate kernel_version: non-empty and 64 hex chars
-            if [[ -n "$kernel_version" && "$kernel_version" =~ ^[a-fA-F0-9]{64}$ ]]; then
+            # Validate kernel_version: non-empty and 64 hex chars (128 non-hex chars)
+            if [[ -n "$kernel_version" && "$kernel_version" =~ ^[a-fA-F0-9]{128}$ ]]; then
                 echo "Found used kernel: $kernel_version" | logger -t bls-gc -p user.info
                 used_kernels+=("$kernel_version")
             else
