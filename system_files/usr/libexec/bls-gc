@@ -37,10 +37,10 @@ for entry in "$BLS_DIR"/*.conf; do
             kernel_version="${BASH_REMATCH[1]}"
             # Validate kernel_version: non-empty and 64 hex chars
             if [[ -n "$kernel_version" && "$kernel_version" =~ ^[a-fA-F0-9]{64}$ ]]; then
-                echo "Found used kernel: $kernel_version"
+                echo "Found used kernel: $kernel_version" | logger -t bls-gc -p user.info
                 used_kernels+=("$kernel_version")
             else
-                echo "WARNING: Ignoring invalid kernel version '$kernel_version' from entry '$entry'" >&2
+                echo "WARNING: Ignoring invalid kernel version '$kernel_version' from entry '$entry'" | logger -t bls-gc -p user.warning
             fi
         fi
     fi
@@ -51,8 +51,8 @@ shopt -s nullglob
 for kernel_file in "$BOOT_DIR"/*; do
     kernel_name=$(basename "$kernel_file")
     if [[ ! " ${used_kernels[*]} " =~ " ${kernel_name} " ]]; then
-        echo "Found and removing unused kernel: $kernel_name"
+        echo "Found and removing unused kernel: $kernel_name" | logger -t bls-gc -p user.info
         rm -r "$kernel_file"
     fi
 done
-echo "Cleanup complete."
+echo "Cleanup complete." | logger -t bls-gc -p user.info
