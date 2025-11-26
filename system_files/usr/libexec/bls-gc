@@ -21,7 +21,8 @@ trap 'log_error $LINENO' ERR
 BLS_DIR="/boot/loader/entries"
 BOOT_DIR="/boot/EFI/Linux"
 if [ ! -d "$BLS_DIR" ] || [ ! -d "$BOOT_DIR" ]; then
-    echo "BLS directory or Boot directory does not exist."
+    echo "ERROR: BLS directory or Boot directory does not exist." | logger -t bls-gc -p user.error
+    echo "BLS directory or Boot directory does not exist." >&2
     exit 1
 fi
 # Collect all used kernel versions from BLS entries
