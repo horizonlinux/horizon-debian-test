@@ -39,3 +39,6 @@ ProtectHome=yes
 # And we shouldn't affect the current deployment's /etc.
 ReadOnlyPaths=/etc
 # We write to /boot of course.
+
+[Install]
+WantedBy=basic.target
