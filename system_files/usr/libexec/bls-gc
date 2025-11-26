@@ -48,11 +48,27 @@ done
 
 # Remove unused kernels from the Boot directory
 shopt -s nullglob
-for kernel_file in "$BOOT_DIR"/*; do
-    kernel_name=$(basename "$kernel_file")
-    if [[ ! " ${used_kernels[*]} " =~ " ${kernel_name} " ]]; then
-        echo "Found and removing unused kernel: $kernel_name" | logger -t bls-gc -p user.info
-        rm -r "$kernel_file"
+if [ ${#used_kernels[@]} -eq 0 ]; then
+    echo "WARNING: No valid used kernels found. Aborting cleanup to avoid deleting all kernels." | logger -t bls-gc -p user.warning
+    echo "No valid used kernels found. Aborting cleanup to avoid deleting all kernels." >&2
+    exit 2
+fi
+
+for kernel_dir in "$BOOT_DIR"/*; do
+    kernel_name=$(basename "$kernel_dir")
+    # Only act on directories
+    if [ -d "$kernel_dir" ]; then
+        found=0
+        for used in "${used_kernels[@]}"; do
+            if [ "$kernel_name" = "$used" ]; then
+                found=1
+                break
+            fi
+        done
+        if [ $found -eq 0 ]; then
+            echo "Found and removing unused kernel directory: $kernel_name" | logger -t bls-gc -p user.info
+            rm -r "$kernel_dir"
+        fi
     fi
 done
 echo "Cleanup complete." | logger -t bls-gc -p user.info
