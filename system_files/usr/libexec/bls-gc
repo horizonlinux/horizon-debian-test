@@ -13,7 +13,7 @@ log_error() {
 }
 
 # Set up error trap
-trap 'log_error $LINENO' ERR EXIT
+trap 'log_error $LINENO' ERR
 
 # This script removes unused kernels from the /boot/EFI/Linux directory
 # using the Boot Loader Specification (BLS) entries found in /boot/loader/entries.
