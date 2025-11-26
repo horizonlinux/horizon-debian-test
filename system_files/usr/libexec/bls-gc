@@ -49,7 +49,7 @@ done
 shopt -s nullglob
 for kernel_file in "$BOOT_DIR"/*; do
     kernel_name=$(basename "$kernel_file")
-    if [[ ! " ${used_kernels[*]} " =~  ${kernel_name}  ]]; then
+    if [[ ! " ${used_kernels[*]} " =~ " ${kernel_name} " ]]; then
         echo "Found and removing unused kernel: $kernel_name"
         rm -rf "$kernel_file"
     fi
