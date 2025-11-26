@@ -38,4 +38,4 @@ TimeoutStopSec=1m
 ProtectHome=yes
 # And we shouldn't affect the current deployment's /etc.
 ReadOnlyPaths=/etc
-# We write to /sysroot and /boot of course.
+# We write to /boot of course.
