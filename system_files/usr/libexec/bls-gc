@@ -46,6 +46,7 @@ for entry in "$BLS_DIR"/*.conf; do
 done
 
 # Remove unused kernels from the Boot directory
+shopt -s nullglob
 for kernel_file in "$BOOT_DIR"/*; do
     kernel_name=$(basename "$kernel_file")
     if [[ ! " ${used_kernels[*]} " =~  ${kernel_name}  ]]; then
