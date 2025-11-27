@@ -31,11 +31,14 @@ apt install -y \
 # Use proper home directory for new users
 sed -i 's|.*HOME=/home|HOME=/var/home|' "/etc/default/useradd"
 
-# Enable boot.mount explicitly
+# Enable mounts
 systemctl enable home.mount
 systemctl enable root.mount
 systemctl enable srv.mount
 systemctl enable mnt.mount
+
+# Enable bootc garbage collection service
+systemctl enable bls-garbage-collect.service
 
 # Fix permissions on sudoers.d
 chmod 440 /etc/sudoers.d/001-bootc
