@@ -25,8 +25,9 @@ apt install -y \
   sudo \
   systemd \
   systemd-boot-* \
+  tpm2-tools \
   xfsprogs \
-  zstd 
+  zstd
 
 # Use proper home directory for new users
 sed -i 's|.*HOME=/home|HOME=/var/home|' "/etc/default/useradd"
