@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -ouex pipefail
+
+echo "::group::Executing install-bootloader"
+trap 'echo "::endgroup::"' EXIT
+
+# Remove unneeded repositories and update
+rm -f /etc/apt/apt.conf.d/docker-gzip-indexes /etc/apt/apt.conf.d/docker-no-languages
+rm -f /var/log/apt/eipp.log.xz
+apt update -y
+
+# Install systemd-boot, remove grub
+apt install -y --allow-remove-essential \
+      systemd \
+      systemd-boot \
+      grub-efi-amd64-signed-
+
+# Make sure we always use the signed shim
+if [ -f /usr/lib/systemd/boot/efi/systemd-bootx64.efi.signed ]; then
+      cp -f /usr/lib/systemd/boot/efi/systemd-bootx64.efi.signed /usr/lib/systemd/boot/efi/systemd-bootx64.efi
+      echo "Replaced unsigned systemd-boot with signed one"
+fi

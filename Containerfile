@@ -15,6 +15,7 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/lib/apt \
     --mount=type=cache,dst=/var/lib/dpkg/updates \
     --mount=type=tmpfs,dst=/tmp \
+    /ctx/install-bootloader && \
     /ctx/install-bootc && \
     /ctx/build && \
     /ctx/shared/build-initramfs && \
