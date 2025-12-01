@@ -25,8 +25,14 @@ apt install -y \
   sudo \
   systemd \
   systemd-boot-* \
+  tpm2-tools \
   xfsprogs \
-  zstd 
+  zstd \
+  cryptsetup \
+  libfido2-1 \
+  libfido2-dev \
+  libtss2-esys-3.0.2-0 \
+  libp11-kit0
 
 # Use proper home directory for new users
 sed -i 's|.*HOME=/home|HOME=/var/home|' "/etc/default/useradd"
