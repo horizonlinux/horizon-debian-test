@@ -25,6 +25,7 @@ apt install -y \
   sudo \
   systemd \
   systemd-boot-* \
+  shim-signed \
   tpm2-tools \
   xfsprogs \
   zstd \
