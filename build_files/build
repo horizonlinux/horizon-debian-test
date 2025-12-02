@@ -35,6 +35,7 @@ systemctl enable home.mount
 systemctl enable root.mount
 systemctl enable srv.mount
 systemctl enable mnt.mount
+systemctl enable media.mount
 
 # Enable bootc garbage collection service
 systemctl enable bls-garbage-collect.service
