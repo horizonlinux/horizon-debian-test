@@ -38,8 +38,6 @@ systemctl enable mnt.mount
 systemctl enable media.mount
 systemctl enable opt.mount
 
-# Enable bootc garbage collection service
-systemctl enable bls-garbage-collect.service
 
 # Fix permissions on sudoers.d
 chmod 440 /etc/sudoers.d/001-bootc
