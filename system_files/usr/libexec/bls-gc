@@ -25,6 +25,17 @@ if [ ! -d "$BLS_DIR" ] || [ ! -d "$BOOT_DIR" ]; then
     echo "BLS directory or Boot directory does not exist." >&2
     exit 1
 fi
+
+# Check if there are at least 3 directories in BOOT_DIR
+shopt -s nullglob
+boot_dirs=("$BOOT_DIR"/*/)
+if [ ${#boot_dirs[@]} -lt 3 ]; then
+    echo "INFO: Fewer than 3 directories in $BOOT_DIR. Skipping cleanup." | logger -t bls-gc -p user.info
+    echo "Fewer than 3 directories in $BOOT_DIR. Skipping cleanup." >&2
+    exit 0
+fi
+shopt -u nullglob
+
 # Collect all used kernel versions from BLS entries
 # the boot configuration file has this line:
 # linux /EFI/Linux/5a8097188a7d98e9d85f23d8a6003fe352182e65a7eb57ef9707c56686f7cfefcdba1fff7813be1badc2bd2454e4ebf67e9521f5537e5ce36da702a033971479/vmlinuz
