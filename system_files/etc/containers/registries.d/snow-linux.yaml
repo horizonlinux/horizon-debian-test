@@ -1,3 +1,0 @@
-docker:
-  ghcr.io/frostyard:
-    use-sigstore-attachments: true
