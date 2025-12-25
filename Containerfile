@@ -20,13 +20,11 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     /ctx/install-bootloader && \
     /ctx/install-bootc && \
     /ctx/build && \
-    systemd-sysusers && \
     sed -i '/Current=/c\Current=breeze' /usr/lib/sddm/sddm.conf.d/default.conf && \
     sed -i '/CursorSize=/c\CursorSize=24' /usr/lib/sddm/sddm.conf.d/default.conf && \
     sed -i '/CursorTheme=/c\CursorTheme=breeze_cursors' /usr/lib/sddm/sddm.conf.d/default.conf && \
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo && \
     systemctl disable systemd-firstboot && \
-    systemctl enable plasma-setup.service && \
     /ctx/shared/build-initramfs && \
     /ctx/shared/finalize
 
