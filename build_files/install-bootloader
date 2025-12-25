@@ -14,4 +14,4 @@ apt update -y
 apt install -y --allow-remove-essential \
       systemd \
       systemd-boot \
-      grub-efi-amd64-signed-
+      {{ if BUILD_ARCH == "x86_64" { 'grub-efi-amd64-signed' } else if BUILD_ARCH == "aarch64" { 'grub-efi-arm64-signed' } else if BUILD_ARCH == "arm64" { 'grub-efi-arm64-signed' } else { '' } }}      
