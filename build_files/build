@@ -15,6 +15,7 @@ apt install -y \
   iproute2 \
   iputils-ping \
   linux-image-generic \
+  lvm2 \
   network-manager \
   skopeo \
   sudo \
