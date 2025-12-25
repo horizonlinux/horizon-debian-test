@@ -3,7 +3,7 @@ FROM scratch AS ctx
 COPY build_files /
 
 # Base Debian Image
-FROM docker.io/library/debian:stable
+FROM docker.io/library/debian:testing
 
 COPY system_files /
 
@@ -23,7 +23,7 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
 
 # DEBUGGING
 # RUN apt update -y && apt install -y whois
-# RUN usermod -p "$(echo "changeme" | mkpasswd -s)" root
+RUN usermod -p "$(echo "changeme" | mkpasswd -s)" root
 
 # Lint
 RUN bootc container lint
