@@ -47,38 +47,3 @@ echo "BUILD_ID=\"$BUILD_ID\"" >> /usr/lib/os-release
 
 apt install -y kde-plasma-desktop sddm flatpak
 systemctl enable sddm
-apt install -y \
-    libgcc-s1 \
-    libc6 \
-    libqt6core6 \
-    libqt6gui6 \
-    libqt6widgets6 \
-    libqt6qml6 \
-    libqt6quick6 \
-    libqt6svg6 \
-    libkf6auth6 \
-    libkf6coreaddons6 \
-    libkf6i18n6 \
-    libkf6package6 \
-    libkf6config6 \
-    libkf6screen6 \
-    libkf6windowsystem6 \
-    libkf6plasma-dev \
-    kf6-plasma-dev \
-    plasma-desktop
-apt install -y \
-    git \
-    cmake \
-    extra-cmake-modules \
-    pkgconf \
-    gettext
-git clone https://invent.kde.org/plasma/plasma-setup.git /tmp/kiss
-cd /tmp/kiss
-cmake -B build \
--DCMAKE_BUILD_TYPE=Release \
--DCMAKE_INSTALL_PREFIX=/usr
-cmake --build build
-apt autoremove -y \
-    git \
-    cmake \
-    extra-cmake-modules
