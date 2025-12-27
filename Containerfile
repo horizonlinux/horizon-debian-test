@@ -27,4 +27,4 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
 
 # Lint
 RUN bootc container lint
-RUN nbc container lint
+RUN nbc lint --local
