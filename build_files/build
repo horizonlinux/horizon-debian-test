@@ -66,6 +66,7 @@ apt install -y \
   build-essential \
   cmake \
   cmake-extras \
+  extra-cmake-modules \
   pkgconf \
   gettext \
   qt6-base-dev \
@@ -94,6 +95,7 @@ apt autoremove -y \
   build-essential \
   cmake \
   cmake-extras \
+  extra-cmake-modules \
   pkgconf \
   gettext \
   qt6-base-dev \
