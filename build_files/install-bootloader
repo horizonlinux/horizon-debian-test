@@ -9,6 +9,7 @@ trap 'echo "::endgroup::"' EXIT
 rm -f /etc/apt/apt.conf.d/docker-gzip-indexes /etc/apt/apt.conf.d/docker-no-languages
 rm -f /var/log/apt/eipp.log.xz
 apt update -y
+apt upgrade -y
 
 # Install systemd-boot, remove grub
 apt install -y --allow-remove-essential \
