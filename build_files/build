@@ -28,7 +28,8 @@ apt install -y \
   libp11-kit0
 
 # TODO: install the latest release by querying releases or using repo when appropriate
-curl https://github.com/frostyard/nbc/releases/download/dev/nbc_1.0.0.dev_amd64.deb -o /tmp/nbc.deb
+curl --fail --retry 5 --retry-all-errors -sSL -o /tmp/nbc.deb \
+    https://github.com/frostyard/nbc/releases/download/dev/nbc_1.0.0.dev_amd64.deb
 apt install -y /tmp/nbc.deb
 
 # Use proper home directory for new users
