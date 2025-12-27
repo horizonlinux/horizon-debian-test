@@ -3,7 +3,7 @@ FROM scratch AS ctx
 COPY build_files /
 
 # Base Debian Image
-FROM docker.io/library/debian:stable
+FROM docker.io/library/debian:testing
 
 COPY system_files /
 
