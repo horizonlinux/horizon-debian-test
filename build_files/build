@@ -14,10 +14,11 @@ apt install -y \
   firmware-linux-free \
   iproute2 \
   iputils-ping \
+  lvm2 \
   linux-image-generic \
   network-manager \
   skopeo \
-  sudo \
+  sudo-rs \
   tpm2-tools \
   xfsprogs \
   zstd \
