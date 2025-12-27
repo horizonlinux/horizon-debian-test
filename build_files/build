@@ -48,3 +48,60 @@ chmod 440 /etc/sudoers.d/001-bootc
 
 # Add build information to os-release
 echo "BUILD_ID=\"$BUILD_ID\"" >> /usr/lib/os-release
+
+apt-mark hold plasma-discover
+apt-mark hold plasma-theme-oxygen
+apt install -y  \
+  plasma-workspace \
+  plasma-desktop \
+  dolphin \
+  konsole \
+  flatpak \
+  kde-config-flatpak \
+  kwrite \
+  git
+
+apt install -y \
+  build-essential \
+  cmake \
+  cmake-extras \
+  pkgconf \
+  gettext \
+  qt6-base \
+  qt6-base-dev \
+  qt6-declarative
+  qt6-declarative-dev \
+  qt6-svg \
+  qt6-svg-dev \
+  kf6-kauth \
+  kf6-kcoreaddons \
+  kf6-ki18n \
+  kf6-kpackage \
+  kf6-kconfig \
+  kscreen \
+  libkscreen \
+  kf6-windowsystem
+
+git clone https://invent.kde.org/plasma/plasma-setup /tmp/kiss
+cd /tmp/kiss
+cmake -B build \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr
+cmake --build build
+cmake --install build
+install -Dm644 LICENSES/BSD-2-Clause.txt /usr/share/licenses/plasma-setup/LICENSE"
+
+apt autoremove -y \
+  build-essential \
+  cmake \
+  cmake-extras \
+  pkgconf \
+  gettext \
+  qt6-base-dev \
+  qt6-declarative-dev \
+  qt6-svg-dev
+
+systemd-sysusers
+systemctl enable sddm
+systemctl enable plasma-setup
+systemctl disable systemd-firstboot
