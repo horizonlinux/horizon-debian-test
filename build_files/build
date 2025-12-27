@@ -71,14 +71,15 @@ apt install -y \
   qt6-base-dev \
   qt6-declarative-dev \
   qt6-svg-dev \
-  kf6-kauth \
-  kf6-kcoreaddons \
-  kf6-ki18n \
-  kf6-kpackage \
-  kf6-kconfig \
+  libkf6auth-data libkf6auth-dev libkf6auth-dev-bin libkf6auth-doc libkf6authcore6 \
+  libkf6coreaddons-data libkf6coreaddons-dev libkf6coreaddons-doc libkf6coreaddons6 qml6-module-org-kde-coreaddons \
+  libkf6i18n-data libkf6i18n-dev libkf6i18n-doc libkf6i18n6 libkf6i18nlocaledata6 libkf6i18nqml6 qml6-module-org-kde-i18n-localedata \
+  kpackagetool6 libkf6package-data libkf6package-dev libkf6package-doc libkf6package6 \
+  libkf6config-bin libkf6config-data libkf6config-dev libkf6config-dev-bin libkf6config-doc libkf6configcore6 libkf6configgui6 libkf6configqml6 qml6-module-org-kde-config \
+  libkf6configwidgets-data libkf6configwidgets-dev libkf6configwidgets-doc libkf6configwidgets6 \
   kscreen \
-  libkscreen \
-  kf6-windowsystem
+  libkf6screen8 libkf6screendpms8 libkscreen-bin libkscreen-data libkscreen-dev libkscreen-doc \
+  libkf6windowsystem-data libkf6windowsystem-dev libkf6windowsystem-doc libkf6windowsystem6 qml6-module-org-kde-kwindowsystem
 
 git clone https://invent.kde.org/plasma/plasma-setup /tmp/kiss
 cd /tmp/kiss
@@ -97,7 +98,15 @@ apt autoremove -y \
   gettext \
   qt6-base-dev \
   qt6-declarative-dev \
-  qt6-svg-dev
+  qt6-svg-dev \
+  libkf6auth-dev libkf6auth-dev-bin \
+  libkf6coreaddons-dev \
+  libkf6i18n-dev \
+  libkf6package-dev \
+  libkf6config-dev libkf6config-dev-bin \
+  libkf6configwidgets-dev \
+  libkscreen-dev \
+  libkf6windowsystem-dev
 
 systemd-sysusers
 systemctl enable sddm
