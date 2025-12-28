@@ -53,6 +53,8 @@ echo "BUILD_ID=\"$BUILD_ID\"" >> /usr/lib/os-release
 apt-mark hold plasma-discover
 apt-mark hold plasma-theme-oxygen
 apt install -y  \
+  sddm-theme-breeze \
+  sddm \
   plasma-workspace \
   plasma-desktop \
   dolphin \
